@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-background: #0a051c;
+  --color-card: #130b2b;
+  --color-accent: #6d28d9;
+  --color-text: #e2e8f0;
+}
+
+body {
+  @apply bg-gradient-to-br from-[#0a051c] to-[#1a103c] min-h-screen text-gray-200;
+}
+
+.header {
+  @apply bg-transparent py-8;
+}
+
+.card {
+  @apply bg-[#130b2b] rounded-2xl border border-purple-900/20 backdrop-blur-sm;
+}
+
+.table-header {
+  @apply bg-purple-900/20 text-gray-200;
+}
+
+.table-cell {
+  @apply p-4 border-b border-purple-900/20;
+}
+
+.radio-button {
+  @apply w-4 h-4 text-purple-600 focus:ring-purple-600;
+}
+
+.checkbox {
+  @apply w-4 h-4 text-purple-600 rounded focus:ring-purple-600 bg-transparent border-purple-500;
+}
+
+.validate-button {
+  @apply bg-purple-600 text-white px-8 py-3 rounded-xl hover:bg-purple-700 transition-colors font-medium;
+}
+
+.feature-list {
+  @apply flex flex-wrap gap-6 mb-8 text-sm text-gray-400;
+}
+
+.feature-item {
+  @apply flex items-center gap-2;
+}
+
+.feature-check {
+  @apply text-purple-500;
+}
+
+.section-title {
+  @apply text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-purple-600 mb-4;
+}
+
+.section-subtitle {
+  @apply text-gray-400 text-lg mb-8 max-w-2xl mx-auto;
+}
