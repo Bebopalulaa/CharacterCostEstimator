@@ -1,1 +1,3 @@
 # CharacterCostEstimator
+
+My quote

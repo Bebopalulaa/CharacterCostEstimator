@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { times } from '../data/times';
 
-function EstimationDetails({ initialTotal, selectedStages, qualityLevels, selectedRigType, onBack }) {
+function EstimationDetails({ 
+  initialTotal, 
+  selectedStages, 
+  qualityLevels, 
+  selectedRigType, 
+  selectedHaircutType,
+  extraPropsCount,
+  onBack 
+}) {
   const [characters, setCharacters] = useState(1);
   const [timeAdjustment, setTimeAdjustment] = useState(0);
   const [total, setTotal] = useState(initialTotal);
@@ -19,7 +27,12 @@ function EstimationDetails({ initialTotal, selectedStages, qualityLevels, select
       if (isSelected) {
         if (stageId === 'rig' && selectedRigType) {
           baseHours += times[selectedRigType];
-        } else if (stageId !== 'rig') {
+        } else if (stageId === 'haircut' && selectedHaircutType) {
+          baseHours += times[selectedHaircutType + qualityLevels[stageId].charAt(0).toUpperCase() + qualityLevels[stageId].slice(1)];
+        } else if (stageId === 'extraProps' && extraPropsCount > 0) {
+          const timeKey = `extraProps${qualityLevels[stageId].charAt(0).toUpperCase() + qualityLevels[stageId].slice(1)}`;
+          baseHours += times[timeKey] * extraPropsCount;
+        } else if (stageId !== 'rig' && stageId !== 'haircut' && stageId !== 'extraProps') {
           const timeKey = `${stageId}${qualityLevels[stageId].charAt(0).toUpperCase() + qualityLevels[stageId].slice(1)}`;
           baseHours += times[timeKey];
         }
@@ -37,7 +50,6 @@ function EstimationDetails({ initialTotal, selectedStages, qualityLevels, select
     const characterDiscountPercentage = Math.min((Math.max(0, characters - 1) * 0.05), MAX_DISCOUNT);
     const afterCharacterDiscount = subtotal * (1 - characterDiscountPercentage);
     
-    // Calcul du pourcentage d'ajustement basé sur le temps total initial
     const timeAdjustmentPercentage = timeAdjustment / totalBaseDays;
     let priceAdjustmentFactor = 0;
     
@@ -75,11 +87,9 @@ function EstimationDetails({ initialTotal, selectedStages, qualityLevels, select
   };
 
   const handleTimeAdjustment = (value) => {
-    // Calcul des limites d'ajustement basées sur le temps total initial
-    const maxIncrease = totalBaseDays; // +100% du temps initial (pour 50% de réduction max)
-    const maxDecrease = -Math.floor(totalBaseDays * 0.5); // -50% du temps initial (pour 50% d'augmentation max)
+    const maxIncrease = totalBaseDays;
+    const maxDecrease = -Math.floor(totalBaseDays * 0.5);
     
-    // Limiter la valeur d'ajustement
     const adjustedValue = Math.min(Math.max(value, maxDecrease), maxIncrease);
     setTimeAdjustment(adjustedValue);
   };
@@ -89,7 +99,7 @@ function EstimationDetails({ initialTotal, selectedStages, qualityLevels, select
       <div className="space-y-6">
         <div>
           <h2 className="text-xl font-bold mb-4 text-purple-400">Number of Characters</h2>
-          <div className="flex items-center gap-4 mb-2">
+          <div className="flex flex-wrap items-center gap-4 mb-2">
             <label>Number of characters:</label>
             <input
               type="number"
@@ -122,7 +132,7 @@ function EstimationDetails({ initialTotal, selectedStages, qualityLevels, select
               </span>
             </div>
             
-            <div className="flex items-center gap-4">
+            <div className="flex flex-wrap items-center gap-4">
               <label>Adjust time (days):</label>
               <input
                 type="number"

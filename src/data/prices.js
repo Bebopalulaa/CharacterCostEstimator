@@ -44,6 +44,28 @@ export const prices = {
   texturingStandard: 250,
   texturingEpic: 375,
   
+  // Nouveaux prix pour Haircut
+  haircutBlenderParticleBasic: 100,
+  haircutBlenderParticleStandard: 200,
+  haircutBlenderParticleEpic: 350,
+  
+  haircutBlenderHaircardBasic: 150,
+  haircutBlenderHaircardStandard: 250,
+  haircutBlenderHaircardEpic: 400,
+  
+  haircutMayaParticleBasic: 120,
+  haircutMayaParticleStandard: 220,
+  haircutMayaParticleEpic: 370,
+  
+  haircutMayaHaircardBasic: 170,
+  haircutMayaHaircardStandard: 270,
+  haircutMayaHaircardEpic: 420,
+  
+  // Prix pour Extra Props (par prop)
+  extraPropsBasic: 50,
+  extraPropsStandard: 100,
+  extraPropsEpic: 175,
+  
   // Ajout des prix de rig générés automatiquement
   ...generateAllRigPrices()
 };

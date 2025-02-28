@@ -60,3 +60,51 @@ body {
 .section-subtitle {
   @apply text-gray-400 text-lg mb-8 max-w-2xl mx-auto;
 }
+
+/* Responsive table styles */
+.table-container {
+  @apply w-full overflow-x-auto;
+}
+
+.responsive-table {
+  @apply min-w-full;
+}
+
+/* Tooltip styles */
+.tooltip-container {
+  @apply relative inline-block;
+}
+
+.tooltip-icon {
+  @apply ml-1 text-purple-400 hover:text-purple-300 cursor-pointer;
+}
+
+.tooltip-content {
+  @apply fixed z-50 w-64 p-3 bg-[#1d1145] text-gray-200 rounded-lg shadow-lg border border-purple-900/30 text-sm;
+  bottom: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px;
+}
+
+.tooltip-content::after {
+  content: '';
+  @apply absolute w-0 h-0 border-solid border-8 border-transparent border-b-[#1d1145];
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .tooltip-content {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+  
+  .tooltip-content::after {
+    left: auto;
+    right: 8px;
+    transform: none;
+  }
+}

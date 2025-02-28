@@ -4,5 +4,7 @@ export const stages = [
   { id: 'retopology', name: 'Retopology' },
   { id: 'uv', name: 'UV' },
   { id: 'texturing', name: 'Texturing' },
+  { id: 'haircut', name: 'Haircut' },
+  { id: 'extraProps', name: 'Extra Props' },
   { id: 'rig', name: 'Rig' }
 ];
