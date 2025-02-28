@@ -37,9 +37,9 @@ export const times = {
   haircutMayaHaircardEpic: 22,
   
   // Temps pour Extra Props (par prop, en heures)
-  extraPropsBasic: 3,
-  extraPropsStandard: 6,
-  extraPropsEpic: 10,
+  extraPropsBasic: 8,
+  extraPropsStandard: 16,
+  extraPropsEpic: 32,
   
   rigBlenderHuman: 4,
   rigBlenderHumanoid: 6,

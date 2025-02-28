@@ -62,9 +62,9 @@ export const prices = {
   haircutMayaHaircardEpic: 420,
   
   // Prix pour Extra Props (par prop)
-  extraPropsBasic: 50,
-  extraPropsStandard: 100,
-  extraPropsEpic: 175,
+  extraPropsBasic: 200,
+  extraPropsStandard: 450,
+  extraPropsEpic: 880,
   
   // Ajout des prix de rig générés automatiquement
   ...generateAllRigPrices()

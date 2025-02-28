@@ -42,13 +42,18 @@ const HAIRCUT_OPTIONS = {
   ]
 };
 
-function App() {
+const App = () => {
   const [selectedStages, setSelectedStages] = useState(
-    stages.reduce((acc, stage) => ({ ...acc, [stage.id]: true }), {})
+    stages.reduce((acc, stage) => ({ 
+      ...acc, 
+      [stage.id]: stage.id === 'blocking' // Seul blocking est activé par défaut
+    }), {})
   );
+  
   const [qualityLevels, setQualityLevels] = useState(
     stages.reduce((acc, stage) => ({ ...acc, [stage.id]: QUALITY_LEVELS.STANDARD }), {})
   );
+  
   const [selectedRigType, setSelectedRigType] = useState(null);
   const [selectedHaircutType, setSelectedHaircutType] = useState(null);
   const [extraPropsCount, setExtraPropsCount] = useState(0);
@@ -179,10 +184,13 @@ function App() {
                       <div className="flex items-center gap-2">
                         <span>{stage.name}</span>
                         <button 
-                          onClick={() => setModalInfo({ 
-                            isOpen: true, 
-                            stage: stageDetails[stage.id]
-                          })}
+                          type="button"
+                          onClick={() => {
+                            setModalInfo({ 
+                              isOpen: true, 
+                              stage: stageDetails[stage.id]
+                            });
+                          }}
                           className="text-2xl text-purple-400 hover:text-purple-300"
                         >
                           <IoMdArrowDropdown />
@@ -423,6 +431,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;
