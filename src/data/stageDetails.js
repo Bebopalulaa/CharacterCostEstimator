@@ -57,7 +57,7 @@ export const stageDetails = {
     description: 'Retopology is the process of creating a new, optimized mesh based on the high-poly model. This step is crucial for creating a game-ready character with proper deformation and performance.',
     images: [
       {
-        url: 'https://via.placeholder.com/400x300?text=Retopology+Edge+Flow',
+        url: 'https://i.gyazo.com/3181cf5774065a98fa07c60f888d053e.gif',
         caption: 'Proper edge flow for animation'
       },
       {
